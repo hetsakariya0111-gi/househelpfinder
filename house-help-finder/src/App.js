@@ -8,6 +8,7 @@ import RegisterSuccess from './pages/RegisterSuccess';
 import WorkerDetail from './pages/WorkerDetail';
 import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
+import About from './pages/About';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/register/success" element={<RegisterSuccess />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <Footer />
