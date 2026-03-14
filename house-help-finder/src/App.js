@@ -6,6 +6,7 @@ import Workers from './pages/Workers';
 import Register from './pages/Register';
 import RegisterSuccess from './pages/RegisterSuccess';
 import WorkerDetail from './pages/WorkerDetail';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -17,12 +18,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/workers" element={<Workers />} />
+            <Route path="/workers/:id" element={<WorkerDetail />} />
             <Route path="/register" element={<Register />} />
             <Route path="/register/success" element={<RegisterSuccess />} />
-            <Route path="/workers/:id" element={<WorkerDetail />} />
-
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );
