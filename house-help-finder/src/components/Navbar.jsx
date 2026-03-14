@@ -29,6 +29,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <Link to="/" className={linkClass('/')}>home</Link>
           <Link to="/workers" className={linkClass('/workers')}>find workers</Link>
+          <Link to="/about" className={linkClass('/about')}>about</Link>
           <Link to="/register" className={linkClass('/register')}>register as worker</Link>
           <Link
             to="/register"
