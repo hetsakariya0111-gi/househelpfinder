@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const initialForm = { name: '', email: '', subject: '', message: '' };
 
 export default function Contact() {
-  const [form, setForm]       = useState(initialForm);
-  const [errors, setErrors]   = useState({});
+  const [form, setForm]           = useState(initialForm);
+  const [errors, setErrors]       = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,20 +26,20 @@ export default function Contact() {
   };
 
   const inputClass = (name) =>
-    `w-full bg-gray-50 border rounded-lg px-3 py-2.5 text-sm outline-none focus:border-green-500 transition-colors ${
-      errors[name] ? 'border-red-300' : 'border-gray-200'
+    `w-full bg-gray-50 dark:bg-gray-700 border rounded-lg px-3 py-2.5 text-sm outline-none focus:border-green-500 transition-colors text-gray-900 dark:text-white placeholder-gray-400 ${
+      errors[name] ? 'border-red-300' : 'border-gray-200 dark:border-gray-600'
     }`;
 
   if (submitted) {
     return (
       <div className="max-w-md mx-auto px-4 py-24 text-center">
-        <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+        <div className="w-16 h-16 bg-green-50 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-5">
           <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h1 className="font-serif text-2xl font-semibold mb-3">message sent!</h1>
-        <p className="text-gray-500 text-sm mb-6">
+        <h1 className="font-serif text-2xl font-semibold mb-3 text-gray-900 dark:text-white">message sent!</h1>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
           Thanks for reaching out. We will get back to you shortly.
         </p>
         <button
@@ -57,8 +57,8 @@ export default function Contact() {
 
       {/* Header */}
       <section className="max-w-2xl mb-10">
-        <h1 className="font-serif text-4xl font-semibold text-gray-900 mb-4">contact us</h1>
-        <p className="text-gray-500 text-base leading-relaxed">
+        <h1 className="font-serif text-4xl font-semibold text-gray-900 dark:text-white mb-4">contact us</h1>
+        <p className="text-gray-500 dark:text-gray-400 text-base leading-relaxed">
           Have a question or feedback? We would love to hear from you.
         </p>
       </section>
@@ -66,29 +66,29 @@ export default function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* Form */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-8">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
 
             <div>
-              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider block mb-1">full name</label>
+              <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">full name</label>
               <input name="name" value={form.name} onChange={handle} placeholder="e.g. Rahul Mehta" className={inputClass('name')} />
               {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
             </div>
 
             <div>
-              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider block mb-1">email</label>
+              <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">email</label>
               <input name="email" type="email" value={form.email} onChange={handle} placeholder="rahul@email.com" className={inputClass('email')} />
               {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider block mb-1">subject</label>
+              <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">subject</label>
               <input name="subject" value={form.subject} onChange={handle} placeholder="e.g. Worker not found in my area" className={inputClass('subject')} />
               {errors.subject && <p className="text-xs text-red-500 mt-1">{errors.subject}</p>}
             </div>
 
             <div>
-              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider block mb-1">message</label>
+              <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">message</label>
               <textarea
                 name="message"
                 value={form.message}
@@ -119,12 +119,12 @@ export default function Contact() {
             { label: 'hours',    value: 'Mon – Sat, 9am – 6pm IST' },
           ].map((item) => (
             <div key={item.label} className="flex gap-4 items-start">
-              <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-green-50 dark:bg-green-900 rounded-xl flex items-center justify-center flex-shrink-0">
                 <div className="w-2 h-2 rounded-full bg-green-600" />
               </div>
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-0.5">{item.label}</p>
-                <p className="text-sm font-medium text-gray-800">{item.value}</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-0.5">{item.label}</p>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.value}</p>
               </div>
             </div>
           ))}
