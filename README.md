@@ -78,6 +78,34 @@ Users can directly contact workers using the provided phone number or messaging 
 
 ---
 
+## Running the project locally
+
+### Backend (`house-help-finder-backend`)
+
+1. Navigate to the backend folder:
+   - `cd house-help-finder-backend`
+2. Copy the example env file and fill in your values:
+   - `cp .env.example .env`
+   - Set a valid `MONGODB_URI` and `JWT_SECRET`.
+3. Install dependencies:
+   - `npm install`
+4. Start the server:
+   - `npm start`
+5. The API will be available at `http://localhost:5000` (e.g. `http://localhost:5000/api/workers`).
+
+### Frontend (`house-help-finder`)
+
+1. Navigate to the frontend folder:
+   - `cd house-help-finder`
+2. Install dependencies:
+   - `npm install`
+3. Start the development server:
+   - `npm start`
+
+Make sure the frontend is configured to call the backend at `http://localhost:5000`.
+
+---
+
 # Technology Stack
 
 ## Frontend

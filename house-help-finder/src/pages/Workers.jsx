@@ -60,50 +60,50 @@ export default function Workers() {
   const stars = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
 
   const availBadge = (a) => ({
-    'full-time': 'bg-green-50 text-green-700',
-    'part-time': 'bg-blue-50 text-blue-700',
-    'live-in':   'bg-purple-50 text-purple-700',
-  }[a] || 'bg-gray-100 text-gray-600');
+    'full-time': 'bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-300',
+    'part-time': 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+    'live-in':   'bg-purple-50 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+  }[a] || 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300');
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
 
       <div className="flex items-center justify-between mb-5">
-        <h1 className="font-serif text-3xl font-semibold">all workers</h1>
-        <span className="text-sm text-gray-500">
+        <h1 className="font-serif text-3xl font-semibold text-gray-900 dark:text-white">all workers</h1>
+        <span className="text-sm text-gray-500 dark:text-gray-400">
           showing {filtered.length} worker{filtered.length !== 1 ? 's' : ''}
         </span>
       </div>
 
-      <div className="flex flex-wrap gap-2 items-center bg-gray-50 border border-gray-200 rounded-xl p-3 mb-8">
+      <div className="flex flex-wrap gap-2 items-center bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 mb-8">
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
-          className="flex-1 min-w-[130px] bg-transparent border-none outline-none text-sm text-gray-700 px-2 py-1"
+          className="flex-1 min-w-[130px] bg-transparent border-none outline-none text-sm text-gray-700 dark:text-gray-300 px-2 py-1"
         >
           <option value="">all service types</option>
           {serviceTypes.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        <div className="w-px h-6 bg-gray-200 hidden sm:block" />
+        <div className="w-px h-6 bg-gray-200 dark:bg-gray-600 hidden sm:block" />
         <input
           type="text"
           placeholder="filter by city or area..."
           value={cityFilter}
           onChange={(e) => setCityFilter(e.target.value)}
-          className="flex-1 min-w-[150px] bg-transparent border-none outline-none text-sm text-gray-700 px-2 py-1 placeholder-gray-400"
+          className="flex-1 min-w-[150px] bg-transparent border-none outline-none text-sm text-gray-700 dark:text-gray-300 px-2 py-1 placeholder-gray-400"
         />
-        <div className="w-px h-6 bg-gray-200 hidden sm:block" />
+        <div className="w-px h-6 bg-gray-200 dark:bg-gray-600 hidden sm:block" />
         <select
           value={availFilter}
           onChange={(e) => setAvailFilter(e.target.value)}
-          className="flex-1 min-w-[130px] bg-transparent border-none outline-none text-sm text-gray-700 px-2 py-1"
+          className="flex-1 min-w-[130px] bg-transparent border-none outline-none text-sm text-gray-700 dark:text-gray-300 px-2 py-1"
         >
           <option value="">any availability</option>
           {availOptions.map((a) => <option key={a} value={a}>{a}</option>)}
         </select>
         <button
           onClick={() => { setTypeFilter(''); setCityFilter(''); setAvailFilter(''); }}
-          className="text-xs text-gray-400 hover:text-gray-600 px-2 py-1"
+          className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 px-2 py-1"
         >
           clear
         </button>
@@ -112,7 +112,7 @@ export default function Workers() {
       {loading ? (
         <Spinner />
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 text-gray-400">
+        <div className="text-center py-16 text-gray-400 dark:text-gray-500">
           <p className="text-lg mb-1">no workers found</p>
           <p className="text-sm">try adjusting your filters</p>
         </div>
@@ -122,25 +122,25 @@ export default function Workers() {
             <div
               key={w.id}
               onClick={() => navigate(`/workers/${w.id}`)}
-              className="bg-white border border-gray-200 rounded-xl p-5 hover:border-green-400 transition-colors cursor-pointer"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:border-green-400 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-11 h-11 rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0 ${w.color}`}>
                   {w.initials}
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900">{w.name}</p>
-                  <p className="text-xs text-gray-500 capitalize">{w.role}</p>
+                  <p className="font-medium text-gray-900 dark:text-white">{w.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">{w.role}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-1.5 mb-3">
-                <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600">{w.city}</span>
-                <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600">{w.area}</span>
+                <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">{w.city}</span>
+                <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">{w.area}</span>
                 <span className={`text-xs px-2.5 py-1 rounded-full ${availBadge(w.avail)}`}>{w.avail}</span>
               </div>
-              <p className="text-xs text-gray-500 mb-3">{w.exp} experience</p>
-              <div className="flex justify-between items-center pt-3 border-t border-gray-100">
-                <span className="text-sm font-medium text-green-700">₹{w.salary.toLocaleString()}/mo</span>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">{w.exp} experience</p>
+              <div className="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                <span className="text-sm font-medium text-green-700 dark:text-green-400">₹{w.salary.toLocaleString()}/mo</span>
                 <span className="text-amber-500 text-xs tracking-wider">{stars(w.rating)}</span>
               </div>
             </div>

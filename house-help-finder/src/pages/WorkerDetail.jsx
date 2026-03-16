@@ -40,7 +40,7 @@ export default function WorkerDetail() {
 
   if (!worker) {
     return (
-      <div className="max-w-5xl mx-auto px-4 py-20 text-center text-gray-400">
+      <div className="max-w-5xl mx-auto px-4 py-20 text-center text-gray-400 dark:text-gray-500">
         <p className="text-xl mb-4">worker not found</p>
         <Link to="/workers" className="text-green-600 hover:underline text-sm">
           back to workers
@@ -52,27 +52,27 @@ export default function WorkerDetail() {
   const stars = '★'.repeat(worker.rating) + '☆'.repeat(5 - worker.rating);
 
   const availBadge = {
-    'full-time': 'bg-green-50 text-green-700',
-    'part-time': 'bg-blue-50 text-blue-700',
-    'live-in':   'bg-purple-50 text-purple-700',
-  }[worker.avail] || 'bg-gray-100 text-gray-600';
+    'full-time': 'bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-300',
+    'part-time': 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+    'live-in':   'bg-purple-50 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+  }[worker.avail] || 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300';
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <Link to="/workers" className="text-sm text-gray-400 hover:text-gray-600 mb-6 inline-block">
+      <Link to="/workers" className="text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 mb-6 inline-block">
         back to workers
       </Link>
 
-      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden">
 
         {/* Top Banner */}
-        <div className="bg-green-50 px-8 py-8 flex items-center gap-5">
+        <div className="bg-green-50 dark:bg-green-900 px-8 py-8 flex items-center gap-5">
           <div className={`w-20 h-20 rounded-full flex items-center justify-center text-2xl font-semibold flex-shrink-0 ${worker.color}`}>
             {worker.initials}
           </div>
           <div>
-            <h1 className="font-serif text-2xl font-semibold text-gray-900">{worker.name}</h1>
-            <p className="text-green-700 capitalize font-medium mt-0.5">{worker.role}</p>
+            <h1 className="font-serif text-2xl font-semibold text-gray-900 dark:text-white">{worker.name}</h1>
+            <p className="text-green-700 dark:text-green-300 capitalize font-medium mt-0.5">{worker.role}</p>
             <p className="text-amber-500 text-sm tracking-wider mt-1">{stars}</p>
           </div>
         </div>
@@ -81,58 +81,58 @@ export default function WorkerDetail() {
 
           {/* About */}
           <div>
-            <h2 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">about</h2>
-            <p className="text-gray-700 text-sm leading-relaxed">{worker.about}</p>
+            <h2 className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">about</h2>
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{worker.about}</p>
           </div>
 
-          <div className="border-t border-gray-100" />
+          <div className="border-t border-gray-100 dark:border-gray-700" />
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">location</p>
-              <p className="text-sm font-medium text-gray-800">{worker.area}, {worker.city}</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">location</p>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{worker.area}, {worker.city}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">experience</p>
-              <p className="text-sm font-medium text-gray-800">{worker.exp}</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">experience</p>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{worker.exp}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">expected salary</p>
-              <p className="text-sm font-medium text-gray-800">Rs.{worker.salary.toLocaleString()}/month</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">expected salary</p>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-200">₹{worker.salary.toLocaleString()}/month</p>
             </div>
             <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">availability</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">availability</p>
               <span className={`text-xs px-2.5 py-1 rounded-full ${availBadge}`}>{worker.avail}</span>
             </div>
           </div>
 
-          <div className="border-t border-gray-100" />
+          <div className="border-t border-gray-100 dark:border-gray-700" />
 
           {/* Contact */}
           <div>
-            <h2 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">contact</h2>
+            <h2 className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">contact</h2>
             <div className="flex flex-col sm:flex-row gap-3">
               
                 <a href={"tel:" + worker.phone}
-  className="flex-1 text-center bg-green-600 text-white py-2.5 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
->
-  call {worker.phone}
-</a>
-<a href={"https://wa.me/" + worker.phone}
-  target="_blank"
-  rel="noreferrer"
-  className="flex-1 text-center border border-green-600 text-green-700 py-2.5 rounded-lg text-sm font-medium hover:bg-green-50 transition-colors"
->
-  message on whatsapp
-</a>
+                className="flex-1 text-center bg-green-600 text-white py-2.5 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
+              >
+                call {worker.phone}
+              </a>
+              
+              <a  href={"https://wa.me/" + worker.phone}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 text-center border border-green-600 text-green-700 dark:text-green-400 py-2.5 rounded-lg text-sm font-medium hover:bg-green-50 dark:hover:bg-green-900 transition-colors"
+              >
+                message on whatsapp
+              </a>
+              
             </div>
-            
           </div>
 
         </div>
       </div>
     </div>
-    
   );
 }
